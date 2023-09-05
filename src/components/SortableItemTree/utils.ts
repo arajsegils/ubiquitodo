@@ -1,7 +1,6 @@
 import { FlatItem, Item, ItemContent } from "@/types/sortableTree";
 import type { UniqueIdentifier } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
-import { Flat } from "lodash";
 
 function getDragDepth(offset: number, indentationWidth: number) {
   return Math.round(offset / indentationWidth);

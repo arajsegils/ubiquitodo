@@ -1,34 +1,53 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Ubiquiti Programming Homework - Ubiquitodo
 
-## Getting Started
+### Tech:
 
-First, run the development server:
+- `Next.js`
+- `yjs`
+- `dnd-kit`
+- `LevelDB`
+- `Drizzle` (Phased out)
+- `TRPC` (Phased out)
+
+Initially it was planned to develop the solution with a Drizzle/TRPC stack which is pretty cool to use, but ultimately was not very suitable for a real-time pub/sub architecture.
+
+Instead a much more traditional and a very crude stack was selected and implemented as a MVP due to the ready support for yjs communication.
+
+Yjs was selected because it is very efficient and uses deltas streamed over Uint8 streams which is far more effective than anything I could have come up with in the meanwhile. Persistence is facilitated with a filesystem based LevelDB which offloads data from ECS clusters onto a persisted and shared storage.
+
+ECS clusters are spun up via Github Actions on push to `main` and there's a `docker-compose` setup to work with it locally. There's also a terraform script for spinning up a simple ec2 instance with the WS server on it.
+
+There are a lot of considerations regarding the stability, security and reliability of the system, especially backend. If this were to be developed into a production app, the backend would need to be rewritten with a proper authentication, decoder, room initialization (for things like id autoincrementation (currently done on client, yikes)).
+
+This turned out to be more of a system architect and devops task than it was a "regular" programming task.
+
+Please do not abuse my server/cluster instances. They cost money and well.. I'm looking for a job.
+
+### Execution:
+
+Next.js server for frontend:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Node WS server with LevelDB for persistence:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+docker-compose up
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+### Implemented user stories (simplified):
 
-## Learn More
+- Can create to-do items
+- Can collaborate in real-time
+- Tasks can be marked as done
+- Complete tasks can be filtered out (incomplete subtasks will be filtered as well)
+- Can add subtasks
+- Can make an infinite amount of nested to-do items (styling is not adjusted for that, though)
+- Can see some presence of other users (shared cursor and selection 90% implemented)
+- Can create multiple shareable Todo lists with unique URLs
+- Can edit offline and sync to remote server on reconnect (not tested too extensively)
+- Can drag & drop
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+No VR Salad tracking, sorry!
