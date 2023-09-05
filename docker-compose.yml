@@ -1,0 +1,12 @@
+version: "3"
+services:
+  y-websocket:
+    image: node:16
+    environment:
+      - PORT=1234
+      - YPERSISTENCE=/data
+    volumes:
+      - ./data:/data
+    command: >
+      bash -c "npm install -g y-websocket &&
+               PORT=1234 YPERSISTENCE=/data node /node_modules/y-websocket/bin/server.js"

@@ -1,0 +1,41 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "entries": [
+    {
+      "idx": 0,
+      "version": "5",
+      "when": 1693555291851,
+      "tag": "0000_overrated_phalanx",
+      "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1693561730140,
+      "tag": "0001_late_ultron",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1693569751185,
+      "tag": "0002_fantastic_marvel_boy",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1693570088519,
+      "tag": "0003_youthful_gideon",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "5",
+      "when": 1693588007704,
+      "tag": "0004_nasty_firelord",
+      "breakpoints": true
+    }
+  ]
+}

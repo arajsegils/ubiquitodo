@@ -1,0 +1,1 @@
+ALTER TABLE "todo_lists" ALTER COLUMN "id" DROP DEFAULT;
