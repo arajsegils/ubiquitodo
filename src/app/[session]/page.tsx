@@ -16,7 +16,7 @@ export default function Page({ params }: { params: { session: string } }) {
     <main className="flex flex-col p-4 md:p-24 gap-8">
       <div className="flex ml-12 mb-10 items-center">
         <SharedInput
-          className="text-2xl font-medium "
+          className="text-2xl font-medium w-full"
           id="title"
           placeholder="New Todo List"
           spellCheck={false}
