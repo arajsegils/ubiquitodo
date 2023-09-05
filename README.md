@@ -13,7 +13,7 @@ Initially it was planned to develop the solution with a Drizzle/TRPC stack which
 
 Instead a much more traditional and a very crude stack was selected and implemented as a MVP due to the ready support for yjs communication.
 
-Yjs was selected because it is very efficient and uses deltas streamed over Uint8 streams which is far more effective than anything I could have come up with in the meanwhile. Persistence is facilitated with a filesystem based LevelDB which offloads data from ECS clusters onto a persisted and shared storage.
+Yjs was selected because it is very efficient and uses deltas streamed over Uint8 streams which is far more efficient than anything I could have come up with in the meanwhile. Persistence is facilitated with a filesystem based LevelDB which offloads data from ECS clusters onto a persisted and shared storage.
 
 ECS clusters are spun up via Github Actions on push to `main` and there's a `docker-compose` setup to work with it locally. There's also a terraform script for spinning up a simple ec2 instance with the WS server on it.
 
