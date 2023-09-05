@@ -23,6 +23,8 @@ This turned out to be more of a system architect and devops task than it was a "
 
 Please do not abuse my server/cluster instances. They cost money and well.. I'm looking for a job.
 
+N.B. Although I like to build frontend mobile-first, there have been absolutely no concern for making it work on mobile during the making of this project.
+
 ### Execution:
 
 Next.js server for frontend:
